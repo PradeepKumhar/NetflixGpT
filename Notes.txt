@@ -1,0 +1,9 @@
+Create a react app
+setup tailwind css
+
+To use react
+npm i -D react-router
+
+header
+
+->use formik for large form
