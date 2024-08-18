@@ -7,3 +7,6 @@ npm i -D react-router
 header
 
 ->use formik for large form
+
+use state for state of variable and useRef for reference of that variable
+
