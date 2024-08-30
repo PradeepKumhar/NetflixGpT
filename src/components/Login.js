@@ -38,7 +38,13 @@ const Login = () => {
           .catch((error) => {
             const errorCode = error.code;
             const errorMessage = error.message;
-            setErrorMessage(errorMessage);
+            if(errorCode === "auth/invalid-credential"){
+              setErrorMessage("Ensure that you’ve entered the correct username or email address.");
+            }
+            else{
+              setErrorMessage(errorMessage);
+            }
+            
           });
       }
     } else {
