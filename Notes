@@ -13,5 +13,10 @@ firebase deploy
 After deploying, view your app at netflix-gpt-c53aa.web.app
 
 create appStore;
-create userSlice for 
+create userSlice for storing user
+create movieSlic slice for storing movie data
+
+
+
+
 
