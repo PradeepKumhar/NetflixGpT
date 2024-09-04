@@ -1,9 +1,10 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { ApiOptions } from "../utils/constant";
 import {  addPopularTvSeries } from "../utils/movieSlice";
 import { useEffect } from "react";
 
 const usePopularTvSeries = () => {
+  const popular_tv_series = useSelector(store => store.movies.popularTvSeries);
   const dispatch = useDispatch();
 
   const getPopularTvSeries = async () => {
@@ -17,7 +18,7 @@ const usePopularTvSeries = () => {
   };
 
   useEffect(() => {
-    getPopularTvSeries();
+    if (!popular_tv_series)  getPopularTvSeries();
   }, [dispatch]); 
 
 };

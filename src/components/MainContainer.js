@@ -12,10 +12,9 @@ export default function MainContainer() {
   const mainMovie = movies[Math.floor(Math.random() * movies.length)];
   const { original_title, overview, id } = mainMovie;
 
-  console.log('Selected Movie:', original_title, overview, id);
 
   return (
-    <div className="relative">
+    <div className="relative ">
       <VideoTitle title={original_title} overview={overview} />
       <VideoBackground movieId={id} />
     </div>
