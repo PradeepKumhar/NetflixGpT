@@ -1,22 +1,29 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import VideoTitle from './VideoTitle';
 import VideoBackground from './VideoBackground';
 import { useSelector } from 'react-redux';
 
-export default function MainContainer() {
+const MainContainer = () => {
   const movies = useSelector((store) => store.movies?.nowPlayingMovies);
+  const [selectedMovie, setSelectedMovie] = useState(null);
 
-  if (!movies || movies.length === 0) return <p>Loading movies...</p>;
+  useEffect(() => {
+    if (movies && movies.length > 0 && !selectedMovie) {
+      const randomMovie = movies[Math.floor(Math.random() * movies.length)];
+      setSelectedMovie(randomMovie);
+    }
+  }, [movies, selectedMovie]);
 
-  // Ensure consistent movie selection for both title and background
-  const mainMovie = movies[Math.floor(Math.random() * movies.length)];
-  const { original_title, overview, id } = mainMovie;
+  if (!selectedMovie) return <p>Loading...</p>;
 
+  const { original_title, overview, id } = selectedMovie;
 
   return (
-    <div className="relative ">
+    <div className="relative">
       <VideoTitle title={original_title} overview={overview} />
       <VideoBackground movieId={id} />
     </div>
   );
-}
+};
+
+export default React.memo(MainContainer);

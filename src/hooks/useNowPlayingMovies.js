@@ -1,11 +1,12 @@
 import { useDispatch, useSelector } from "react-redux";
 import { ApiOptions } from "../utils/constant";
 import { addNowPlayingMovies } from "../utils/movieSlice";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 
 const useNowPlayingMovies = () => {
   const now_playing = useSelector(store => store.movies.nowPlayingMovies);
   const dispatch = useDispatch();
+  const hasCalledApi = useRef(false);
 
   const getNowPlayingMovies = async () => {
     try {
@@ -18,10 +19,11 @@ const useNowPlayingMovies = () => {
   };
 
   useEffect(() => {
-    if (!now_playing)  getNowPlayingMovies();;
-   
-  }, [dispatch]); 
-
+    if (!now_playing && !hasCalledApi.current) {
+      hasCalledApi.current = true;
+      getNowPlayingMovies();
+    }
+  }, []);
 };
 
 export default useNowPlayingMovies;

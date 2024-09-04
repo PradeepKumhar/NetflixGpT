@@ -7,7 +7,7 @@ export default function SecondaryContainer() {
 
   return (
     <div className='bg-black'>
-      <div className='-mt-60 relative z-10 bg-transparent'>
+      <div className=' -mt-[140px] relative z-10 bg-transparent md:-mt-60'>
         <MovieList title={"Now Playing"} movies={movies.nowPlayingMovies} />
         <MovieList title={"Top Rated"} movies={movies.topRatedMovies} />
         <MovieList title={"Popular"} movies={movies.popularMovies} />

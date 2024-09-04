@@ -8,6 +8,7 @@ const VideoBackground = (movieId) => {
     const [isMuted, setIsMuted] = useState(true);
     useMovieTrailer(movieId);
     const trailerVideo = useSelector(store => store.movies?.movieTrailer);
+    console.log("trailer video: ",   `https://www.youtube.com/embed/${trailerVideo}`);
 
 
    
@@ -23,15 +24,16 @@ const VideoBackground = (movieId) => {
   
 
     return (
-        <div className='w-screen'>
+        <div className='w-screen '>
             {videoSrc ? (
                 <>
                 <iframe
-                 className='w-screen aspect-video'
+                 className='w-[100%] h-[100%]   aspect-[9/14] object-cover md:aspect-video'
                  src={videoSrc}
                     title="YouTube video player"
                     frameBorder="0"
                     allow="autoplay; fullscreen"
+                                    
                     
                 ></iframe>
                  <button

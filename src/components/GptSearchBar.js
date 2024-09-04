@@ -32,8 +32,7 @@ const searchMovie = async (movie) => {
         const promissArray = gptMovies.map(movie => searchMovie(movie));
         const resultArray = await Promise.all(promissArray);
 
-        console.log(resultArray);
-        console.log(gptMovies);
+   
 
         dispatch(addMovieResult({movieName:gptMovies, movieResult:resultArray}));
 
@@ -49,16 +48,16 @@ const searchMovie = async (movie) => {
   };
 
   return (
-    <div className="pt-[10%] flex justify-center">
-      <form className='w-1/2 bg-black grid grid-cols-12' onSubmit={handleGptSearch}>
+    <div className=" pt-[60%] md:pt-[10%] flex justify-center">
+      <form className=' w-[80%] md:w-1/2 bg-black grid grid-cols-12 md:grid-cols-12' onSubmit={handleGptSearch}>
         <input
-          className='p-4 m-4 col-span-9'
+          className=' col-span-8 m-4 md:p-4 md:m-4 md:col-span-9 placeholder:text-[0.65rem] px-2 rounded-sm md:placeholder:text-lg'
           type='text'
           ref={searchText}
           placeholder={lang[Lang].gptPlaceholder}
         />
         <button
-          className='col-span-3 m-4 py-2 px-4 bg-red-700 text-white rounded-lg'
+          className='col-span-3 text-xs md:text-lg my-3 px-2 md:m-4 md:py-2 md:px-4 bg-red-700 text-white rounded-lg'
           type="submit"
           disabled={isLoading}
         >
